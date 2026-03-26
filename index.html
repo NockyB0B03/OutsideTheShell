@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NC4TSE1EB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -400,7 +400,7 @@
   .solution-header { text-align: center; margin-bottom: 4.5rem; }
   .solution-header h2 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: 0.04em; color: var(--forest); line-height: 1.05;
+    font-size: clamp(2.2rem, 6vw, 4.5rem); letter-spacing: 0.04em; color: var(--forest); line-height: 1.05;
   }
   .solution-header h2 em { font-style: normal; color: var(--sky); }
   .solution-header p {
@@ -493,6 +493,208 @@
 
   /* ── CALENDAR ── */
   .calendar-section { background: var(--cream); padding: 8rem 3rem; }
+
+  .events-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-card {
+    display: flex;
+    align-items: stretch;
+    background: var(--white);
+    border: 1px solid rgba(74,103,65,0.12);
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .event-card:hover {
+    box-shadow: 0 6px 32px rgba(45,74,30,0.1);
+    transform: translateY(-2px);
+  }
+
+  .event-date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    background: var(--forest);
+    padding: 1.2rem 1rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .event-date-block::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 3px;
+    background: var(--fern);
+  }
+
+  .event-month {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .event-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--stone);
+    letter-spacing: 0.02em;
+  }
+  .event-year {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 300;
+    color: rgba(200,191,175,0.45);
+    letter-spacing: 0.1em;
+  }
+
+  .event-info {
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+    flex: 1;
+  }
+
+  .event-location {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgba(61,43,20,0.5);
+    text-transform: uppercase;
+  }
+
+  .event-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.45rem;
+    letter-spacing: 0.05em;
+    color: var(--forest);
+    line-height: 1.1;
+  }
+
+  .event-desc {
+    font-size: 0.73rem;
+    font-weight: 300;
+    color: rgba(61,43,20,0.6);
+    line-height: 1.7;
+  }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .event-type {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fern);
+    background: rgba(74,103,65,0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .event-spots {
+    font-size: 0.62rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .spots-soon {
+    color: var(--sky) !important;
+  }
+
+  /* ─────────────────────────────────────────
+     RESPONSIVE — MOBILE FIRST
+  ───────────────────────────────────────── */
+
+  /* shared helper */
+  .section-h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+
+    .nav-links { gap: 1.4rem; }
+    .nav-links a, .lang-btn { font-size: 0.6rem; }
+
+    .problems-inner,
+    .pendant-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .offerings { grid-template-columns: 1fr; gap: 3px; }
+
+    .stats-inner { grid-template-columns: repeat(2,1fr); }
+
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+
+    .pendant-visual { order: -1; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; height: 56px; }
+    .nav-logo { font-size: 1.1rem; }
+
+    /* collapse nav to essential items on small screens */
+    .nav-links { gap: 1rem; }
+    .nav-links li:nth-child(3) { display: none; } /* hide shop on very small */
+
+    section, .solution, .problems, .pendant-section,
+    .calendar-section, .contacts { padding: 4rem 1.2rem; }
+
+    .hero-title { font-size: clamp(3.5rem, 16vw, 6rem); }
+
+    .problems-inner { gap: 2rem; }
+
+    .solution-header { margin-bottom: 2.5rem; }
+
+    .stats { padding: 2.5rem 1.2rem; }
+    .stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-number { font-size: 2.8rem; }
+
+    .offerings { grid-template-columns: 1fr; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 3rem 1.2rem 1.5rem; }
+
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    .pendant-visual img { width: 200px !important; height: 200px !important; }
+
+    .event-card { flex-direction: row; }
+    .event-date-block { min-width: 72px; padding: 1rem 0.7rem; }
+    .event-day { font-size: 2.8rem; }
+    .event-info { padding: 0.9rem 1rem; }
+    .event-desc { display: none; }
+
+    .lang-dropdown { right: -20px; }
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
+    .nav-links { gap: 0.7rem; }
+  }
 
   /* ── CONTACTS ── */
   .contacts { background: var(--white); padding: 8rem 3rem; }
@@ -776,25 +978,65 @@
   <div class="solution-inner">
     <div class="solution-header">
       <span class="section-label" style="color:var(--earth)">Upcoming Experiences</span>
-      <h2 style="font-family:'Bebas Neue',sans-serif; color:var(--forest); letter-spacing:0.04em; font-size:clamp(2.8rem,5vw,4.5rem); line-height:1.05;">Find your next <em style="font-style:normal; color:var(--sky)">adventure</em></h2>
+      <h2 class="section-h2" style="color:var(--forest);">Find your next <em style="font-style:normal; color:var(--sky)">adventure</em></h2>
       <p style="color:rgba(61,43,20,0.6); font-size:0.82rem; font-weight:300; max-width:540px; margin:1.2rem auto 0; line-height:1.9;">Browse curated treks, city walks, and flashpacking routes organised by locals around the world. Book your spot and step outside the shell.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3px;">
-      <div class="offering-card" style="padding:2rem;">
-        <div style="font-size:0.58rem; letter-spacing:0.2em; color:var(--fern); margin-bottom:0.8rem; text-transform:uppercase; font-weight:400;">April 12 · Cinque Terre, IT</div>
-        <h3>Coastal Trek at Dawn</h3>
-        <p style="margin-top:0.4rem;">5 spots left</p>
+    <div class="events-grid">
+
+      <!-- Event 1 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">APR</span>
+          <span class="event-day">12</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-info">
+          <div class="event-location">📍 Cinque Terre, IT</div>
+          <h3 class="event-title">Coastal Trek at Dawn</h3>
+          <p class="event-desc">A sunrise trek along the cliffside paths of Cinque Terre with a local guide who knows every hidden viewpoint.</p>
+          <div class="event-meta">
+            <span class="event-type">Adventure Trekking</span>
+            <span class="event-spots">5 spots left</span>
+          </div>
+        </div>
       </div>
-      <div class="offering-card" style="padding:2rem;">
-        <div style="font-size:0.58rem; letter-spacing:0.2em; color:var(--fern); margin-bottom:0.8rem; text-transform:uppercase; font-weight:400;">April 19 · Lisbon, PT</div>
-        <h3>Fado &amp; Fado Streets</h3>
-        <p style="margin-top:0.4rem;">8 spots left</p>
+
+      <!-- Event 2 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">APR</span>
+          <span class="event-day">19</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-info">
+          <div class="event-location">📍 Lisbon, PT</div>
+          <h3 class="event-title">Fado &amp; Fado Streets</h3>
+          <p class="event-desc">Wander Alfama's cobblestones with a born-and-raised local, ending the night in a tiny fado house only regulars know.</p>
+          <div class="event-meta">
+            <span class="event-type">City Backpacking</span>
+            <span class="event-spots">8 spots left</span>
+          </div>
+        </div>
       </div>
-      <div class="offering-card" style="padding:2rem;">
-        <div style="font-size:0.58rem; letter-spacing:0.2em; color:var(--fern); margin-bottom:0.8rem; text-transform:uppercase; font-weight:400;">May 3 · Kyoto, JP</div>
-        <h3>Temple Flashpack</h3>
-        <p style="margin-top:0.4rem;">Coming soon</p>
+
+      <!-- Event 3 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">MAY</span>
+          <span class="event-day">03</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-info">
+          <div class="event-location">📍 Kyoto, JP</div>
+          <h3 class="event-title">Temple Flashpack</h3>
+          <p class="event-desc">Tech-enhanced exploration of Kyoto's ancient temple trails — shared routes, photos, and playlists with your fellow hikers.</p>
+          <div class="event-meta">
+            <span class="event-type">Flashpacking</span>
+            <span class="event-spots spots-soon">Coming soon</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
